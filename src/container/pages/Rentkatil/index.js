@@ -60,7 +60,7 @@ export default class Rentkatil extends React.Component {
         scalesPageToFit={true}
         bounces={false}
         javaScriptEnabled
-        style={{ height: 300, width: 400 }}
+        style={{ height: 302, width: 400 }}
         source={{
           html: `
               <!DOCTYPE html>
