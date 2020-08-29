@@ -3,10 +3,12 @@ import {
   View,
   Text,
   FlatList,
+  Image,
   Animated,
   Dimensions,
   ImageBackground,
 } from 'react-native';
+import Barcode from 'react-native-barcode-expo';
 import PropTypes from 'prop-types';
 import { ItemCard } from './../../molecule/CardItemsPromo';
 
@@ -18,6 +20,7 @@ export class CardPromoApi extends React.Component {
       PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,
+        barcode: PropTypes.string,
         picture: PropTypes.any,
         content: PropTypes.element,
       })
@@ -73,7 +76,7 @@ export class CardPromoApi extends React.Component {
       let scale = windowWidth / viewWidth;
 
       //let maxHeight = windowHeight / scale;
-      let maxHeight = 500;
+      let maxHeight = 400;
       Animated.timing(this.state.zoomAnim, {
         toValue: scale,
         duration: this.props.duration,
@@ -116,6 +119,7 @@ export class CardPromoApi extends React.Component {
       title={item.title}
       picture={item.picture}
       content={item.content}
+      barcode={item.barcode}
       onPress={() => this._onPressItem({ item, index })}
       onClose={() => this._onCloseItem({ item, index })}
       maxHeight={this.state.maxHeight}
@@ -133,22 +137,33 @@ export class CardPromoApi extends React.Component {
             position: 'absolute',
             flex: 1,
             width: 420,
-            bottom: 0,
-            top: 20,
+            top: 22,
+
             height: 720,
             left: 0,
           }}
         ></ImageBackground>
+        <Image
+          source={require('../../../../assets/xxxx.png')}
+          style={{
+            height: 160,
+            width: 280,
+            marginTop: 30,
+            alignContent: 'center',
+            justifyContent: 'center',
+            alignSelf: 'center',
+          }}
+        />
         <Text
           style={{
             textAlign: 'center',
-            paddingTop: 50,
+
             color: 'white',
-            fontSize: 40,
-            fontWeight: '300',
+            fontSize: 25,
+            fontWeight: '200',
           }}
         >
-          Promotion
+          COUPON VOUCHER
         </Text>
         <FlatList
           ref={(c) => (this._flatList = c)}

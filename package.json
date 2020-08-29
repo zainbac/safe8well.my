@@ -29,6 +29,7 @@
     "react": "^16.13.1",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-barcode-expo": "^1.1.1",
     "react-native-camera": "^3.22.1",
     "react-native-card-animated-modal": "^1.0.3",
     "react-native-elements": "^1.2.7",

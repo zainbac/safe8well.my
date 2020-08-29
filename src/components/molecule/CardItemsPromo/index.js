@@ -9,10 +9,13 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import Barcode from 'react-native-barcode-expo';
 
 export class ItemCard extends React.Component {
   static propTypes = {
+    value: '',
     title: PropTypes.string.isRequired,
+    barcode: PropTypes.string.isRequired,
     picture: PropTypes.any.isRequired,
     selected: PropTypes.bool,
     height: PropTypes.number,
@@ -20,7 +23,7 @@ export class ItemCard extends React.Component {
     onPress: PropTypes.func,
     onLayout: PropTypes.func,
     onClose: PropTypes.func,
-
+    children: PropTypes.string.isRequired,
     activeOpacity: PropTypes.number,
 
     shrinkTo: PropTypes.number,
@@ -43,11 +46,14 @@ export class ItemCard extends React.Component {
       heightAnim: new Animated.Value(this.props.height || 200),
       scaleAnim: new Animated.Value(1),
       selected: this.props.selected,
+      barcode: this.props.barcode,
     };
   }
 
   _onPresIn = () => {
     if (this.props.selected) {
+      this.setState({ barcode: this.props.barcode });
+
       return;
     }
 
@@ -85,6 +91,7 @@ export class ItemCard extends React.Component {
   }
 
   render() {
+    console.log(this.props.barcode);
     return (
       <TouchableOpacity
         activeOpacity={this.props.activeOpacity || 0.8}
@@ -134,6 +141,7 @@ export class ItemCard extends React.Component {
           {this.props.selected ? (
             <View style={{ flex: 1, padding: 20 }}>
               {this.props.content || <Text>COntent!</Text>}
+              <Barcode value={this.props.barcode} format='CODE128' />
             </View>
           ) : null}
         </Animated.View>
