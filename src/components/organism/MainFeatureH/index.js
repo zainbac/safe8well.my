@@ -17,6 +17,7 @@ class MainfeatureH extends React.Component {
         }}
       >
         <MainFeature
+          onPress={() => this.props.navigation.navigate('Promotion')}
           title='I-CATALOGUE'
           img={require('../../../../assets/marketing.png')}
         />

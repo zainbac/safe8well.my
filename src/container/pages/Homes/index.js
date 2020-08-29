@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 // import MainSearch from '../../../../src/components/molecule/SearchFeature';
-// import Gonews from '../../../../src/components/molecule/GoNews';
+import Gonews from '../../../../src/components/molecule/GoNews';
 // import Internalgo from '../../../../src/components/molecule/Internalgo';
 // import SliderEntry from '../../../../src/components/molecule/ScrollableItem';
 // import Carousel from '../../../../src/components/organism/Scrollable';
@@ -195,6 +195,9 @@ class Homes extends Component {
                 position: 'relative',
               }}
             />
+            <Gonews
+              onPress={() => this.props.navigation.navigate('Facebook')}
+            ></Gonews>
           </View>
         </ParallaxScrollView>
 

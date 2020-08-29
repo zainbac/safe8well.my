@@ -384,7 +384,6 @@ var styles = StyleSheet.create({
   },
   top: {
     marginBottom: 0,
-    backgroundColor: 'blue',
   },
   bottom: {
     marginTop: 0,

@@ -9,6 +9,7 @@ import {
   ScanQRCode,
   ForgotPassword,
   Safe8well,
+  Promotion,
   Loading,
   Youtube,
   GoogleMaps,
@@ -19,7 +20,7 @@ import {
 import Login from './../../components/organism/Login';
 import Signup from './../../components/organism/SignUp';
 import Dashboard from './../../components/organism/Dashboard';
-
+import Api from './../../components/organism/Api';
 const Stack = createStackNavigator();
 
 function AppNavigator() {
@@ -37,10 +38,33 @@ function AppNavigator() {
             },
           }}
         />
+        <Stack.Screen
+          name='Promotion'
+          component={Promotion}
+          options={{
+            headerShown: false,
+            opacity: 1,
+            cardStyle: {
+              backgroundColor: 'white',
+            },
+          }}
+        />
 
         <Stack.Screen
           name='SectionFifa'
           component={SectionFifa}
+          options={{
+            headerShown: false,
+            opacity: 1,
+            cardStyle: {
+              backgroundColor: 'white',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name='Api'
+          component={Api}
           options={{
             headerShown: false,
             opacity: 1,

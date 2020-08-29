@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { getCurrentFrame } from 'expo/build/AR';
+
 const OrderDetail = (props) => {
   return (
     <View style={{ flex: 1 }}>

@@ -7,6 +7,7 @@ import Safe8well from './Safe8well';
 import Youtube from './Youtube';
 import Rentkatil from './Rentkatil';
 import Homes from './Homes';
+import Promotion from './Promotion';
 import ForgotPassword from './ForgotPassword';
 import Loading from './Loading';
 import GoogleMaps from './GoogleMaps';
@@ -16,6 +17,7 @@ export {
   SectionFifa,
   Order,
   ScanQRCode,
+  Promotion,
   OrderDetail,
   GoogleMaps,
   Loading,
