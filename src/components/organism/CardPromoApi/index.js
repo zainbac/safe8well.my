@@ -130,14 +130,16 @@ export class CardPromoApi extends React.Component {
 
   render() {
     return (
-      <Animated.View style={[{ flex: 1 }, this.state.zoomedStyle]}>
+      <Animated.View
+        style={[{ flex: 1, marginTop: 20 }, this.state.zoomedStyle]}
+      >
         <ImageBackground
           source={require('./../../../../assets/login1.png')}
           style={{
             position: 'absolute',
             flex: 1,
             width: 420,
-            top: 22,
+            top: 0,
 
             height: 720,
             left: 0,
@@ -146,8 +148,8 @@ export class CardPromoApi extends React.Component {
         <Image
           source={require('../../../../assets/xxxx.png')}
           style={{
-            height: 160,
-            width: 280,
+            height: 110,
+            width: 220,
             marginTop: 30,
             alignContent: 'center',
             justifyContent: 'center',
@@ -170,7 +172,8 @@ export class CardPromoApi extends React.Component {
           style={[
             {
               flex: 1,
-              marginTop: 30,
+              marginTop: 0,
+              marginBottom: 0,
             },
             this.props.listStyle,
           ]}

@@ -94,6 +94,7 @@ export default class Promotion extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',

@@ -18,7 +18,7 @@ class MainfeatureH extends React.Component {
       >
         <MainFeature
           onPress={() => this.props.navigation.navigate('Promotion')}
-          title='I-CATALOGUE'
+          title='REPAIR VOUCHER'
           img={require('../../../../assets/marketing.png')}
         />
         <MainFeature

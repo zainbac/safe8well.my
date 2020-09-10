@@ -84,7 +84,7 @@ const OrderDetail = (props) => {
               :{' '}
             </Text>
             <Text style={{ fontWeight: 'bold', textAlign: 'center' }}>
-              JITRON HEALTHCARE SDN BHD{' '}
+              our Founder personal account.{' '}
             </Text>
             <Text
               style={{

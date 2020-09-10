@@ -50,7 +50,7 @@ export default class ForgotPassword extends React.Component {
         <View style={styles.loginbox}>
           <View style={styles.logincontainer}>
             <Image
-              source={require('./../../../../assets/logo1.png')}
+              source={require('./../../../../assets/official.png')}
               style={styles.logo}
             ></Image>
 
@@ -144,8 +144,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    height: 130,
-    width: 130,
+    height: 120,
+    width: 250,
   },
   logintext: {
     color: 'black',

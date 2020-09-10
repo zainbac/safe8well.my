@@ -105,13 +105,12 @@ class Loading extends Component {
             </Text>
             <View style={{ position: 'relative' }}>
               <Image
-                source={require('../../../../assets/card4.png')}
+                source={require('../../../../assets/cardX.png')}
                 style={{
                   height: 400,
                   width: 410,
                   alignItems: 'center',
-                  marginHorizontal: 16,
-                  borderRadius: 6,
+                  marginHorizontal: 10,
                 }}
               />
 
@@ -119,8 +118,8 @@ class Loading extends Component {
                 style={{
                   paddingTop: 16,
                   paddingBottom: 20,
-                  marginHorizontal: 16,
-                  position: 'relative',
+                  marginHorizontal: 20,
+
                   alignItems: 'center',
                   bottom: 290,
                   left: 40,

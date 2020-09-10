@@ -10,7 +10,19 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+
 class HomeCarousel extends React.Component {
+  state = { animating: true };
+
+  closeActivityIndicator = () =>
+    setTimeout(
+      () =>
+        this.setState({
+          animating: false,
+        }),
+      2000
+    );
+
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Source Listing',
@@ -21,17 +33,19 @@ class HomeCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      isloading: true,
       dataSource: [],
     };
   }
   componentDidMount() {
+    this.closeActivityIndicator();
     fetch('https://blooming-castle-82100.herokuapp.com/')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
-          loading: false,
+          isLoading: false,
           dataSource: responseJson,
+          spinner: true,
         });
         console.log(responseJson);
       })
@@ -39,6 +53,7 @@ class HomeCarousel extends React.Component {
   }
 
   render() {
+    const animating = this.state.animating;
     // const HomeCarousel = () => {
 
     //   useEffect(() => {
@@ -53,6 +68,14 @@ class HomeCarousel extends React.Component {
 
     return (
       <View>
+        {this.state.spinner ? (
+          <ActivityIndicator size='small' animating={animating} />
+        ) : (
+          <View>
+            <ActivityIndicator size='large' animating={animating} />
+          </View>
+        )}
+
         <Carousel data={this.state.dataSource} />
       </View>
     );

@@ -53,7 +53,7 @@ export default class GoogleMaps extends React.Component {
     return (
       <WebView
         source={{
-          uri: 'https://www.safe8well.my/store-location',
+          uri: 'https://priceless-yalow-2a2a59.netlify.app',
         }}
         style={{ marginTop: 20 }}
       />

@@ -86,7 +86,7 @@ class Homes extends Component {
           parallaxHeaderHeight={270}
           headerHeight={50}
           isHeaderFixed={false}
-          parallaxHeight={300}
+          parallaxHeight={200}
           renderForeground={() => (
             <View style={{ flex: 1, paddingTop: 0 }}>
               <Image
@@ -119,7 +119,7 @@ class Homes extends Component {
                 />
                 <View
                   style={{
-                    bottom: 190,
+                    bottom: 1000,
                   }}
                 ></View>
                 <View
@@ -135,7 +135,6 @@ class Homes extends Component {
                     borderTopRightRadius: 8,
                     borderBottomRightRadius: 8,
                     position: 'absolute',
-                    marginBottom: 10,
                   }}
                 >
                   <HomeNaveFeature style={{ top: 10 }} />
@@ -152,23 +151,25 @@ class Homes extends Component {
               marginHorizontal: 0,
             }}
           >
-            <View style={{ bottom: 30 }}>
-              <View style={{ marginHorizontal: 17, paddingTop: 20 }}>
+            <View style={{ bottom: 0 }}>
+              <View style={{ marginHorizontal: 17, marginTop: 20 }}>
                 <Text
                   style={{
                     fontWeight: 'bold',
                     fontSize: 14,
 
                     color: '#434449',
+                    marginBottom: 10,
                   }}
                 >
-                  SAFE & WELL.MY
+                  WELEPAIR.MY
                 </Text>
               </View>
               <MainFeatureH />
 
               <View
                 style={{
+                  marginTop: 10,
                   marginHorizontal: 17,
                   fontWeight: 'bold',
                   fontSize: 14,
@@ -184,17 +185,28 @@ class Homes extends Component {
                     color: '#434449',
                   }}
                 >
-                  SAFE & WELL PROMOTION
+                  WELEPAIR.MY PROMOTION
                 </Text>
               </View>
-              {/* INTETNALGO */}
-              <View style={{ paddingTop: 0 }}></View>
+
+              <View style={{ paddingTop: 20 }}></View>
             </View>
             <HomeCarousel
               style={{
                 position: 'relative',
               }}
             />
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 14,
+                marginTop: 20,
+                marginHorizontal: 11,
+                color: '#434449',
+              }}
+            >
+              WELEPAIR.MY FANPAGE
+            </Text>
             <Gonews
               onPress={() => this.props.navigation.navigate('Facebook')}
             ></Gonews>

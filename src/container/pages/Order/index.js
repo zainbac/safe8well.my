@@ -55,7 +55,7 @@ class Order extends Component {
         FOR AWHILE OUR SERVICES ARE COVERED WITHIN JOHOR BHARU AND KUALA LUMPUR
         & KLANG VALLEY AREA
       </Text>
-      <Text style={{ fontWeight: 'bold' }}>HQ OFFICE: TEL: 03-5885 3936</Text>
+      <Text style={{ fontWeight: 'bold' }}>HQ OFFICE: TEL: 0134472956</Text>
       {this._renderButtona('Close', () =>
         this.setState({ visibleModal: null })
       )}

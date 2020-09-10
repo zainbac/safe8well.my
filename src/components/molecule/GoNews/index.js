@@ -35,7 +35,7 @@ const Gonews = (props) => {
                 left: 30,
               }}
             >
-              SAFE & WELL FACEBOOK {'\n'} {'               '}
+              WELEPAIR FACEBOOK {'\n'} {'               '}
               JOIN US
             </Text>
             <Text

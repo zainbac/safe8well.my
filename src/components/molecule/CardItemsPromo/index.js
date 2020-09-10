@@ -142,6 +142,7 @@ export class ItemCard extends React.Component {
             <View style={{ flex: 1, padding: 20 }}>
               {this.props.content || <Text>COntent!</Text>}
               <Barcode value={this.props.barcode} format='CODE128' />
+              <Text style={{ textAlign: 'center' }}>{this.props.barcode}</Text>
             </View>
           ) : null}
         </Animated.View>
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderRadius: 10,
-    backgroundColor: 'rgb(240, 240, 240)',
+    backgroundColor: 'white',
     margin: 20,
     padding: 0,
   },

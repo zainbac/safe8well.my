@@ -146,7 +146,7 @@ class Home extends Component {
               </TouchableOpacity>
               <View
                 style={{
-                  marginTop: -27,
+                  marginTop: 0,
                   bottom: 0,
                   marginTop: 0,
                   bottom: 0,
@@ -194,10 +194,9 @@ class Home extends Component {
                     borderTopRightRadius: 8,
                     borderBottomRightRadius: 8,
                     position: 'absolute',
-                    marginBottom: 10,
                   }}
                 >
-                  <HomeNaveFeature style={{ position: 'relative', top: 10 }} />
+                  <HomeNaveFeature style={{ position: 'relative' }} />
                 </View>
               </View>
             </View>
@@ -212,22 +211,24 @@ class Home extends Component {
             }}
           >
             <View style={{ bottom: 0 }}>
-              <View style={{ marginHorizontal: 17 }}>
+              <View style={{ marginHorizontal: 17, marginTop: 20 }}>
                 <Text
                   style={{
                     fontWeight: 'bold',
                     fontSize: 14,
 
                     color: '#434449',
+                    marginBottom: 10,
                   }}
                 >
-                  SAFE & WELL.MY
+                  WELEPAIR.MY
                 </Text>
               </View>
               <MainFeatureH />
 
               <View
                 style={{
+                  marginTop: 10,
                   marginHorizontal: 17,
                   fontWeight: 'bold',
                   fontSize: 14,
@@ -243,7 +244,7 @@ class Home extends Component {
                     color: '#434449',
                   }}
                 >
-                  SAFE & WELL PROMOTION
+                  WELEPAIR.MY PROMOTION
                 </Text>
               </View>
 
@@ -254,6 +255,17 @@ class Home extends Component {
                 position: 'relative',
               }}
             />
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 14,
+                marginTop: 20,
+                marginHorizontal: 11,
+                color: '#434449',
+              }}
+            >
+              WELEPAIR.MY FANPAGE
+            </Text>
             <Gonews
               onPress={() => this.props.navigation.navigate('Facebook')}
             ></Gonews>

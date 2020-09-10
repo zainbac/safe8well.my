@@ -86,7 +86,7 @@ export default class Login extends React.Component {
       this.setState({
         isLoading: false,
         errorr:
-          'Name and Membership invalid. Please call  03-5885 3936 for registration',
+          'Name and Membership invalid. Please call  013-4472956 for registration',
       });
     } else {
       this.setState({
@@ -188,7 +188,7 @@ export default class Login extends React.Component {
         <View style={styles.loginbox}>
           <View style={styles.logincontainer}>
             <Image
-              source={require('./../../../../assets/logo1.png')}
+              source={require('./../../../../assets/official.png')}
               style={styles.logo}
             ></Image>
             {this.state.errorMessage && (
@@ -325,8 +325,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    height: 130,
-    width: 130,
+    height: 120,
+    width: 250,
   },
   logintext: {
     color: 'black',
