@@ -22,7 +22,7 @@ export class CardPromoApi extends React.Component {
         title: PropTypes.string,
         barcode: PropTypes.string,
         picture: PropTypes.any,
-        content: PropTypes.element,
+        content: PropTypes.string,
       })
     ),
 
@@ -130,59 +130,74 @@ export class CardPromoApi extends React.Component {
 
   render() {
     return (
-      <Animated.View
-        style={[{ flex: 1, marginTop: 20 }, this.state.zoomedStyle]}
-      >
+      <View style={{ flex: 1 }}>
         <ImageBackground
           source={require('./../../../../assets/login1.png')}
           style={{
             position: 'absolute',
-            flex: 1,
-            width: 420,
+            width: 20000,
+            height: 1000,
+
             top: 0,
 
-            height: 720,
             left: 0,
           }}
         ></ImageBackground>
-        <Image
-          source={require('../../../../assets/xxxx.png')}
-          style={{
-            height: 110,
-            width: 220,
-            marginTop: 30,
-            alignContent: 'center',
-            justifyContent: 'center',
-            alignSelf: 'center',
-          }}
-        />
-        <Text
-          style={{
-            textAlign: 'center',
 
-            color: 'white',
-            fontSize: 25,
-            fontWeight: '200',
-          }}
-        >
-          COUPON VOUCHER
-        </Text>
-        <FlatList
-          ref={(c) => (this._flatList = c)}
+        <Animated.View
           style={[
             {
               flex: 1,
-              marginTop: 0,
-              marginBottom: 0,
+
+              alignSelf: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              padding: 20,
+              marginTop: 30,
             },
-            this.props.listStyle,
+            this.state.zoomedStyle,
           ]}
-          data={this.props.cards}
-          scrollEnabled={true}
-          keyExtractor={this._keyExtractor}
-          renderItem={this._renderItem}
-        />
-      </Animated.View>
+        >
+          <Image
+            source={require('../../../../assets/xxxx.png')}
+            style={{
+              height: 120,
+              width: 220,
+
+              marginTop: 0,
+              alignContent: 'center',
+              justifyContent: 'center',
+              alignSelf: 'center',
+            }}
+          />
+          <Text
+            style={{
+              textAlign: 'center',
+
+              color: 'white',
+              fontSize: 20,
+              fontWeight: '200',
+            }}
+          >
+            SPECIAL PRICE MEMBERS
+          </Text>
+          <FlatList
+            ref={(c) => (this._flatList = c)}
+            style={[
+              {
+                flex: 1,
+                marginTop: 0,
+                marginBottom: 40,
+              },
+              this.props.listStyle,
+            ]}
+            data={this.props.cards}
+            scrollEnabled={true}
+            keyExtractor={this._keyExtractor}
+            renderItem={this._renderItem}
+          />
+        </Animated.View>
+      </View>
     );
   }
 }

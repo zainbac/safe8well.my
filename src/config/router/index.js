@@ -14,6 +14,9 @@ import {
   Youtube,
   GoogleMaps,
   Rentkatil,
+  Technician,
+  RentCaj,
+  RentM11,
   Homes,
   Facebook,
 } from './../../container/pages';
@@ -30,6 +33,17 @@ function AppNavigator() {
         <Stack.Screen
           name='Home'
           component={Home}
+          options={{
+            headerShown: false,
+            opacity: 1,
+            cardStyle: {
+              backgroundColor: 'white',
+            },
+          }}
+        />
+        <Stack.Screen
+          name='Technician'
+          component={Technician}
           options={{
             headerShown: false,
             opacity: 1,
@@ -119,6 +133,17 @@ function AppNavigator() {
             },
           }}
         />
+        <Stack.Screen
+          name='RentCaj'
+          component={RentCaj}
+          options={{
+            headerShown: false,
+            opacity: 1,
+            cardStyle: {
+              backgroundColor: 'white',
+            },
+          }}
+        />
 
         <Stack.Screen
           name='OrderDetail'
@@ -154,7 +179,17 @@ function AppNavigator() {
             },
           }}
         />
-
+        <Stack.Screen
+          name='RentM11'
+          component={RentM11}
+          options={{
+            headerShown: false,
+            opacity: 1,
+            cardStyle: {
+              backgroundColor: 'white',
+            },
+          }}
+        />
         <Stack.Screen
           name='Loading'
           component={Loading}

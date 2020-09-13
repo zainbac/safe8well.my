@@ -92,7 +92,7 @@ const OrderDetail = (props) => {
                 textAlign: 'center',
               }}
             >
-              CIMB : 8600-66-3982{' '}
+              RHB : 1123 0300 266557{' '}
             </Text>
             <Image
               source={require('../../../../assets/dollar.png')}

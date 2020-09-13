@@ -6,15 +6,21 @@ import ScanQRCode from './ScanQrCode';
 import Safe8well from './Safe8well';
 import Youtube from './Youtube';
 import Rentkatil from './Rentkatil';
+import RentCaj from './../../components/organism/RentCaj';
+import RentM11 from './../../components/organism/RentM11';
 import Homes from './Homes';
 import Promotion from './Promotion';
 import ForgotPassword from './ForgotPassword';
 import Loading from './Loading';
 import GoogleMaps from './GoogleMaps';
+import Technician from './Technician';
 import Facebook from './Facebook';
 export {
   Home,
   SectionFifa,
+  Technician,
+  RentCaj,
+  RentM11,
   Order,
   ScanQRCode,
   Promotion,

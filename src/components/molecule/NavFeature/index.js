@@ -8,7 +8,16 @@ const NavFeature = (props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center' }}>
       <TouchableOpacity onPress={props.onPress}>
-        <Image style={{ width: 35, height: 35 }} source={props.img} />
+        <Image
+          style={{
+            width: 35,
+            height: 35,
+            alignContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}
+          source={props.img}
+        />
         <Text
           style={{
             fontSize: 13,
@@ -16,6 +25,7 @@ const NavFeature = (props) => {
             color: 'white',
             marginTop: 10,
             textAlign: 'center',
+            justifyContent: 'center',
           }}
         >
           {props.title}

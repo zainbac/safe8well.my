@@ -71,7 +71,11 @@ class HomeNaveFeature extends React.Component {
           img={require('../../../../assets/tm66.png')}
         />
 
-        <NavFeature title='PROMO' img={require('../../../../assets/tm4.png')} />
+        <NavFeature
+          onPress={() => this.props.navigation.navigate('Technician')}
+          title='TECHNICIAN'
+          img={require('../../../../assets/tm4.png')}
+        />
 
         <NavFeature
           onPress={this.handleSignUpp}

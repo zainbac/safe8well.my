@@ -47,7 +47,7 @@ export default class Facebook extends React.Component {
       <SafeAreaView style={styles.flexContainer}>
         <WebView
           source={{
-            uri: 'https://www.facebook.com/safe8well/',
+            uri: 'https://www.facebook.com/ZBCMARKETING',
           }}
           style={{ marginTop: 20 }}
         />

@@ -140,7 +140,9 @@ export class ItemCard extends React.Component {
 
           {this.props.selected ? (
             <View style={{ flex: 1, padding: 20 }}>
-              {this.props.content || <Text>COntent!</Text>}
+              {/* {this.props.content || <Text>COntent!</Text>} */}
+
+              <Text style={{ textAlign: 'center' }}>{this.props.content}</Text>
               <Barcode value={this.props.barcode} format='CODE128' />
               <Text style={{ textAlign: 'center' }}>{this.props.barcode}</Text>
             </View>
@@ -154,23 +156,30 @@ export class ItemCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+
     backgroundColor: 'white',
     margin: 20,
     padding: 0,
   },
   image: {
-    width: undefined,
-    height: 200,
-    padding: 20,
+    padding: 90,
     margin: 0,
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
   text: {
     backgroundColor: 'transparent',
-    color: 'white',
-    fontWeight: '300',
-    fontSize: 44,
+    color: '#c42645',
+    padding: 35,
+
+    left: 120,
+    bottom: 40,
+    textAlign: 'center',
+    fontWeight: '800',
+    fontSize: 10,
   },
 });

@@ -15,7 +15,6 @@ import Navbarr from '../../../../src/components/organism/NavbarH';
 import GoOxygen from '../../../../src/components/molecule/GoMiniXsr';
 import GoCaj from '../../../../src/components/molecule/GoCaj';
 import GoBed from '../../../../src/components/molecule/GoBed';
-import GoSsc from '../../../../src/components/molecule/Gossc';
 
 class Order extends Component {
   constructor(props) {
@@ -138,12 +137,14 @@ class Order extends Component {
           </Text>
 
           <ScrollView horizontal={true} style={{ flex: 1, marginTop: 20 }}>
-            <GoBed />
-            <GoSsc />
+            <GoBed onPress={() => this.props.navigation.navigate('RentCaj')} />
+            {/* <GoSsc /> */}
             <GoCaj
               onPress={() => this.props.navigation.navigate('Rentkatil')}
             />
-            <GoOxygen />
+            <GoOxygen
+              onPress={() => this.props.navigation.navigate('RentM11')}
+            />
 
             <View>
               <View
