@@ -46,8 +46,7 @@ export default class Safe8well extends React.Component {
     return (
       <WebView
         source={{
-          uri:
-            'https://www.lazada.com.my/safe-amp-well/?langFlag=en&q=All-Products&from=wangpu&pageTypeId=2',
+          uri: 'https://shopee.com.my/shop/158803766/search',
         }}
         style={{ marginTop: 20 }}
       />

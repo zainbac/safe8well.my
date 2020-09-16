@@ -179,7 +179,7 @@ export class CardPromoApi extends React.Component {
               fontWeight: '200',
             }}
           >
-            SPECIAL PRICE MEMBERS
+            Strictly for cashier use
           </Text>
           <FlatList
             ref={(c) => (this._flatList = c)}

@@ -3,6 +3,7 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
+  BackHandler,
   TextInput,
   View,
   Alert,
@@ -13,9 +14,41 @@ import {
 import { Button } from 'react-native-elements';
 import { LinearGradient } from 'expo-linear-gradient';
 import firebase from './../../../container/pages/database';
-
+import NetInfo from '@react-native-community/netinfo';
+import AwesomeAlert from 'react-native-awesome-alerts';
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null, isFocused: false };
+
+  constructor(props) {
+    super(props);
+    this.states = {
+      showAlert: false,
+    };
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+  }
+
+  disableScroll() {
+    this.setState({ scroll: !this.state.scroll });
+  }
+  showAlert = () => {
+    this.setState({
+      showAlert: true,
+    });
+  };
+
+  hideAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+  };
+
+  fuckAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+    this.props.navigation.navigate('Login');
+  };
+
   handleSignUpppd = () => {
     firebase
       .auth()
@@ -33,6 +66,48 @@ export default class Login extends React.Component {
       });
     this.props.navigation.navigate('Homes');
   };
+  componentDidMount() {
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonClick
+    );
+    const netStatus = NetInfo.fetch();
+
+    if (netStatus === 'none' || netStatus === 'NONE') {
+      BackHandler.exitApp();
+      console.log('error');
+      this.setState({
+        error,
+        showAlert: true,
+      });
+      return [];
+    } else {
+      console.log('error');
+    }
+  }
+  componentWillUnmount() {
+    // This is the Last method in the activity lifecycle
+    // Removing Event Listener for the BackPress
+    BackHandler.removeEventListener(
+      'hardwareBackPress',
+      this.handleBackButtonClick
+    );
+  }
+  handleBackButtonClick() {
+    // Registered function to handle the Back Press
+    // We are generating an alert to show the back button pressed
+    showAlert: true, this.props.navigation.goBack(null);
+    return true;
+
+    // Return true to enable back button over ride.
+    return true;
+
+    // We can move to any screen. If we want
+    this.props.navigation.goBack(null);
+    // Returning true means we have handled the backpress
+    // Returning false means we haven't handled the backpress
+    return true;
+  }
 
   onResetPasswordPress = () => {
     firebase
@@ -72,124 +147,159 @@ export default class Login extends React.Component {
     }
   };
   render() {
-    return (
-      <View style={styles.container}>
-        <ImageBackground
-          source={require('./../../../../assets/login1.png')}
+    const { showAlert } = this.state;
+
+    if (this.state.error) {
+      return (
+        <View
           style={{
-            position: 'absolute',
             flex: 1,
-            width: 420,
-            bottom: 0,
-            top: 20,
-            height: 720,
-            left: 0,
+            backgroundColor: 'transparent',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-        ></ImageBackground>
+        >
+          <AwesomeAlert
+            show={showAlert}
+            showProgress={false}
+            title='Internet Error'
+            message='We are unable to process your request'
+            closeOnTouchOutside={true}
+            closeOnHardwareBackPress={false}
+            showCancelButton={true}
+            showConfirmButton={true}
+            cancelText='No, cancel'
+            confirmText='Logout'
+            confirmButtonColor='#DD6B55'
+            onCancelPressed={() => {
+              this.fuckAlert();
+            }}
+            onConfirmPressed={() => {
+              this.hideAlert();
+              BackHandler.exitApp();
+            }}
+          />
+        </View>
+      );
+    } else
+      return (
+        <View style={styles.container}>
+          <ImageBackground
+            source={require('./../../../../assets/login1.png')}
+            style={{
+              position: 'absolute',
+              flex: 1,
+              width: 420,
+              bottom: 0,
+              top: 20,
+              height: 720,
+              left: 0,
+            }}
+          ></ImageBackground>
 
-        <View style={styles.loginbox}>
-          <View style={styles.logincontainer}>
-            <Image
-              source={require('./../../../../assets/official.png')}
-              style={styles.logo}
-            ></Image>
-            {this.state.errorMessage && (
+          <View style={styles.loginbox}>
+            <View style={styles.logincontainer}>
+              <Image
+                source={require('./../../../../assets/official.png')}
+                style={styles.logo}
+              ></Image>
+              {this.state.errorMessage && (
+                <Text
+                  style={{ color: 'pink', fontWeight: 'bold', paddingTop: 10 }}
+                >
+                  {this.state.errorMessage}
+                </Text>
+              )}
+              <Text style={styles.logintext}></Text>
+            </View>
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+              <TextInput
+                style={styles.inputemail}
+                placeholder={'Email'}
+                placeholderTextColor={'grey'}
+                underlineColorAndroid='transparent'
+                onChangeText={(email) => this.setState({ email })}
+                value={this.state.email}
+              ></TextInput>
+              <TextInput
+                secureTextEntry
+                style={styles.inputpass}
+                placeholder={'Password'}
+                placeholderTextColor={'grey'}
+                underlineColorAndroid='transparent'
+                onChangeText={(password) => this.setState({ password })}
+                value={this.state.password}
+              ></TextInput>
               <Text
-                style={{ color: 'pink', fontWeight: 'bold', paddingTop: 10 }}
+                onPress={() => this.props.navigation.navigate('ForgotPassword')}
+                style={{
+                  color: '#4e70f6',
+                  alignContent: 'flex-end',
+                  alignItems: 'flex-end',
+                  alignSelf: 'flex-start',
+                  marginHorizontal: 20,
+                  fontSize: 12,
+                  fontWeight: 'bold',
+                }}
               >
-                {this.state.errorMessage}
+                Forgot Password ?
               </Text>
-            )}
-            <Text style={styles.logintext}></Text>
-          </View>
-          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <TextInput
-              style={styles.inputemail}
-              placeholder={'Email'}
-              placeholderTextColor={'grey'}
-              underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({ email })}
-              value={this.state.email}
-            ></TextInput>
-            <TextInput
-              secureTextEntry
-              style={styles.inputpass}
-              placeholder={'Password'}
-              placeholderTextColor={'grey'}
-              underlineColorAndroid='transparent'
-              onChangeText={(password) => this.setState({ password })}
-              value={this.state.password}
-            ></TextInput>
-            <Text
-              onPress={() => this.props.navigation.navigate('ForgotPassword')}
-              style={{
-                color: '#4e70f6',
-                alignContent: 'flex-end',
-                alignItems: 'flex-end',
-                alignSelf: 'flex-start',
-                marginHorizontal: 20,
-                fontSize: 12,
-                fontWeight: 'bold',
-              }}
-            >
-              Forgot Password ?
-            </Text>
 
-            <View style={styles.buttonarea}>
-              {/* <Button
+              <View style={styles.buttonarea}>
+                {/* <Button
                 onPress={this.handleLogin}
                 style={styles.signinbutton}
                 title='LOGIN'
                 color='#37b05c'
               /> */}
-              <Button
-                ViewComponent={LinearGradient} // Don't forget this!
-                onPress={this.handleLogin}
-                style={styles.signinbutton}
-                title='Sign in'
-                linearGradientProps={{
-                  colors: ['#003dbc', '#003dbc'],
-                  start: { x: 0, y: 0.5 },
-                  end: { x: 1, y: 0.5 },
-                }}
-              />
-
-              <View style={{ marginTop: 10 }}>
                 <Button
                   ViewComponent={LinearGradient} // Don't forget this!
-                  onPress={() => this.props.navigation.navigate('Signup')}
+                  onPress={this.handleLogin}
                   style={styles.signinbutton}
-                  title='Register'
-                  color='blue'
+                  title='Sign in'
                   linearGradientProps={{
-                    colors: ['#4e70f6', '#4e70f6'],
+                    colors: ['#003dbc', '#003dbc'],
                     start: { x: 0, y: 0.5 },
                     end: { x: 1, y: 0.5 },
                   }}
                 />
-              </View>
-              <View style={{ marginTop: 10 }}></View>
-              <View style={{ marginTop: 10 }}>
-                <TouchableOpacity
-                  onPress={this.handleSignUpppd}
-                  color='#39ff14'
-                >
-                  <Text
-                    style={{
-                      color: '#4e70f6',
-                      textAlign: 'center',
-                      fontWeight: 'bold',
+
+                <View style={{ marginTop: 10 }}>
+                  <Button
+                    ViewComponent={LinearGradient} // Don't forget this!
+                    onPress={() => this.props.navigation.navigate('Signup')}
+                    style={styles.signinbutton}
+                    title='Register'
+                    color='blue'
+                    linearGradientProps={{
+                      colors: ['#4e70f6', '#4e70f6'],
+                      start: { x: 0, y: 0.5 },
+                      end: { x: 1, y: 0.5 },
                     }}
+                  />
+                </View>
+                <View style={{ marginTop: 10 }}></View>
+                <View style={{ marginTop: 10 }}>
+                  <TouchableOpacity
+                    onPress={this.handleSignUpppd}
+                    color='#39ff14'
                   >
-                    Continue as Guest ?
-                  </Text>
-                </TouchableOpacity>
+                    <Text
+                      style={{
+                        color: '#4e70f6',
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      Continue as Guest ?
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
-    );
+      );
   }
 }
 

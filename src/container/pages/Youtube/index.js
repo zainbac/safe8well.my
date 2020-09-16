@@ -47,7 +47,7 @@ export default class Youtube extends React.Component {
       <SafeAreaView style={styles.flexContainer}>
         <WebView
           source={{
-            uri: 'https://www.youtube.com/channel/UCHu3AJDLZzgXcs1gJBG6ilw',
+            uri: 'https://www.youtube.com/channel/UCJ8X0b-82YicdehryrQLQig',
           }}
           style={{ marginTop: 20 }}
         />

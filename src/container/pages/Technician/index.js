@@ -1,47 +1,100 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  FlatList,
+  ScrollView,
   BackHandler,
+  Alert,
+  FlatList,
+  ImageBackground,
   Image,
   TouchableOpacity,
 } from 'react-native';
+import * as Linking from 'expo-linking';
 import FetchingIndicator from 'react-native-fetching-indicator';
-const Item = ({ item }) => {
+import AwesomeAlert from 'react-native-awesome-alerts';
+
+function Item({ item }) {
+  const handlePress = () => {
+    Linking.openURL('tel:' + item.nophone);
+  };
+
   return (
-    <View style={styles.listItem}>
-      <Image
-        source={{ uri: item.photo }}
-        style={{ width: 60, height: 60, borderRadius: 30 }}
-      />
-      <View style={{ alignItems: 'center', flex: 1 }}>
-        <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
-        <Text>{item.position}</Text>
-      </View>
-      <TouchableOpacity
+    <View>
+      <ImageBackground
+        source={require('./../../../../assets/login1.png')}
         style={{
-          height: 50,
-          width: 50,
-          justifyContent: 'center',
-          alignItems: 'center',
+          position: 'absolute',
+          width: 20000,
+          height: 1000,
+
+          top: 0,
+
+          left: 0,
         }}
-      >
-        <Text style={{ color: 'green' }}>Call</Text>
-      </TouchableOpacity>
+      ></ImageBackground>
+
+      <ScrollView style={styles.listItem}>
+        <Image
+          source={{ uri: item.photo }}
+          style={{
+            width: 90,
+            height: 90,
+            borderRadius: 40,
+            alignItems: 'center',
+            alignSelf: 'center',
+            alignContent: 'center',
+          }}
+        />
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <View>
+            <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
+            <Text style={{ textAlign: 'center' }}>{item.position}</Text>
+          </View>
+
+          <View>
+            <TouchableOpacity
+              style={{
+                height: 50,
+                width: 50,
+                alignContent: 'center',
+                flexDirection: 'column',
+                alignSelf: 'flex-end',
+              }}
+              onPress={handlePress}
+            >
+              <View>
+                <Text
+                  style={{
+                    color: 'green',
+                  }}
+                >
+                  Call
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
-};
+}
 
-export default class Technician extends React.Component {
+export default class Technician extends Component {
+  state = {
+    data: [],
+    scroll: true,
+  };
+
   constructor(props) {
     super(props);
     //Binding handleBackButtonClick function with this
-    this.state = {
+    this.states = {
       scroll: true,
-
-      dataSource: [],
+      data: [],
+      dataSources: [],
+      showAlert: false,
     };
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
@@ -49,20 +102,44 @@ export default class Technician extends React.Component {
   disableScroll() {
     this.setState({ scroll: !this.state.scroll });
   }
+  showAlert = () => {
+    this.setState({
+      showAlert: true,
+    });
+  };
+
+  hideAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+  };
+
+  fuckAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+    this.props.navigation.navigate('Login');
+  };
 
   componentDidMount() {
-    <FetchingIndicator isFetching={this.state.isFetching} />;
-    fetch('https://lit-sands-32641.herokuapp.com')
+    fetch('https://mighty-beach-35301.herokuapp.com/')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
           isLoading: false,
-          dataSource: responseJson,
+          dataSources: responseJson,
           spinner: true,
         });
-        console.log(responseJson);
+        console.log(this.state.dataSources);
       })
-      .catch((error) => Alert.alert('SORRY :( . failed internet connectivty')); //to catch the errors if any
+      .catch(
+        (error) =>
+          this.setState({
+            error,
+            showAlert: true,
+          })
+        // Example.alert('you have low bandwith')
+      ); //to catch the errors if any
 
     // This is the first method in the activity lifecycle
     // Addding Event Listener for the BackPress
@@ -82,7 +159,7 @@ export default class Technician extends React.Component {
   handleBackButtonClick() {
     // Registered function to handle the Back Press
     // We are generating an alert to show the back button pressed
-    this.props.navigation.goBack(null);
+    showAlert: true, this.props.navigation.goBack(null);
     return true;
 
     // Return true to enable back button over ride.
@@ -94,107 +171,138 @@ export default class Technician extends React.Component {
     // Returning false means we haven't handled the backpress
     return true;
   }
-  static navigationOptions = {
-    //Setting the header of the screen
-    title: 'Second Page',
-  };
-  state = {
-    data: [
-      {
-        name: 'Miyah Myles',
-        email: 'miyah.myles@gmail.com',
-        position: 'Data Entry Clerk',
-        photo:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=707b9c33066bf8808c934c8ab394dff6',
-      },
-      {
-        name: 'June Cha',
-        email: 'june.cha@gmail.com',
-        position: 'Sales Manager',
-        photo: 'https://randomuser.me/api/portraits/women/44.jpg',
-      },
-      {
-        name: 'Iida Niskanen',
-        email: 'iida.niskanen@gmail.com',
-        position: 'Sales Manager',
-        photo: 'https://randomuser.me/api/portraits/women/68.jpg',
-      },
-      {
-        name: 'Renee Sims',
-        email: 'renee.sims@gmail.com',
-        position: 'Medical Assistant',
-        photo: 'https://randomuser.me/api/portraits/women/65.jpg',
-      },
-      {
-        name: 'Jonathan Nu\u00f1ez',
-        email: 'jonathan.nu\u00f1ez@gmail.com',
-        position: 'Clerical',
-        photo: 'https://randomuser.me/api/portraits/men/43.jpg',
-      },
-      {
-        name: 'Sasha Ho',
-        email: 'sasha.ho@gmail.com',
-        position: 'Administrative Assistant',
-        photo:
-          'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?h=350&auto=compress&cs=tinysrgb',
-      },
-      {
-        name: 'Abdullah Hadley',
-        email: 'abdullah.hadley@gmail.com',
-        position: 'Marketing',
-        photo:
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=a72ca28288878f8404a795f39642a46f',
-      },
-      {
-        name: 'Thomas Stock',
-        email: 'thomas.stock@gmail.com',
-        position: 'Product Designer',
-        photo:
-          'https://tinyfac.es/data/avatars/B0298C36-9751-48EF-BE15-80FB9CD11143-500w.jpeg',
-      },
-      {
-        name: 'Veeti Seppanen',
-        email: 'veeti.seppanen@gmail.com',
-        position: 'Product Designer',
-        photo: 'https://randomuser.me/api/portraits/men/97.jpg',
-      },
-      {
-        name: 'Bonnie Riley',
-        email: 'bonnie.riley@gmail.com',
-        position: 'Marketing',
-        photo: 'https://randomuser.me/api/portraits/women/26.jpg',
-      },
-    ],
-  };
 
   render() {
-    return (
-      <View style={styles.container}>
-        <FlatList
-          style={{ flex: 1 }}
-          data={this.state.data}
-          renderItem={({ item }) => <Item item={item} />}
-          keyExtractor={(item) => item.email}
-        />
-      </View>
-    );
+    const { showAlert } = this.state;
+
+    if (this.state.error) {
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'transparent',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <AwesomeAlert
+            show={showAlert}
+            showProgress={false}
+            title='Internet Error'
+            message='We are unable to process your request'
+            closeOnTouchOutside={true}
+            closeOnHardwareBackPress={false}
+            showCancelButton={true}
+            showConfirmButton={true}
+            cancelText='No, cancel'
+            confirmText='Logout'
+            confirmButtonColor='#DD6B55'
+            onCancelPressed={() => {
+              this.fuckAlert();
+            }}
+            onConfirmPressed={() => {
+              this.hideAlert();
+              BackHandler.exitApp();
+            }}
+          />
+        </View>
+      );
+    } else
+      return (
+        <View style={styles.container}>
+          <View style={{ marginTop: 20 }}>
+            <ImageBackground
+              source={require('./../../../../assets/login1.png')}
+              style={{
+                position: 'absolute',
+                width: 20000,
+                height: 1000,
+
+                top: 0,
+
+                left: 0,
+              }}
+            ></ImageBackground>
+
+            <Text
+              style={{
+                textAlign: 'center',
+
+                marginTop: 40,
+                color: 'white',
+                fontSize: 20,
+
+                fontWeight: '100',
+              }}
+            >
+              Authoristed Welepair Technician
+            </Text>
+          </View>
+
+          {/* <CardPromoApi cards={this.state.dataSource} />
+        <FetchingIndicator isFetching /> */}
+
+          {this.state.spinner ? (
+            <FlatList
+              style={{ flex: 1, position: 'relative', marginTop: 10 }}
+              data={this.state.dataSources}
+              renderItem={({ item }) => <Item item={item} />}
+              keyExtractor={(item) => item.nophone}
+            />
+          ) : (
+            <View>
+              <FetchingIndicator
+                isFetching
+                style={{
+                  flex: 1,
+                  position: 'relative',
+                  marginTop: 10,
+                  position: 'relative',
+                }}
+              />
+            </View>
+          )}
+        </View>
+      );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
-    marginTop: 60,
+
+    marginTop: 0,
   },
   listItem: {
-    margin: 10,
-    padding: 10,
+    margin: 5,
+    padding: 40,
     backgroundColor: '#FFF',
     width: '80%',
     flex: 1,
     alignSelf: 'center',
     flexDirection: 'row',
     borderRadius: 5,
+  },
+  title: {
+    fontSize: 20,
+    marginTop: 120,
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  button: {
+    backgroundColor: '#4EB151',
+    paddingVertical: 11,
+    paddingHorizontal: 17,
+    borderRadius: 3,
+    marginBottom: 15,
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
