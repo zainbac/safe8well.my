@@ -19,10 +19,7 @@ import MainFeatureH from '../../../../src/components/organism/MainFeatureH';
 import HomeNaveFeature from '../../../../src/components/organism/HomeNaveFeature';
 import firebase from './../../../container/pages/database';
 import HomeCarousel from '../../pages/CarouselHome';
-import Gonews2 from '../../../../src/components/molecule/GoNews2';
-import { withNavigation } from '@react-navigation/compat';
-import ScrollableItemsss from './../../../components/GoNewsBapak';
-import Dashboard from './../../../components/organism/Dashboard';
+
 class Home extends Component {
   constructor() {
     super();

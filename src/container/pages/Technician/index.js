@@ -14,6 +14,7 @@ import {
 import * as Linking from 'expo-linking';
 import FetchingIndicator from 'react-native-fetching-indicator';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import StarRating from 'react-native-rating-star';
 
 function Item({ item }) {
   const handlePress = () => {
@@ -48,6 +49,12 @@ function Item({ item }) {
           }}
         />
         <View style={{ flex: 1, flexDirection: 'row' }}>
+          <StarRating
+            maxStars={5}
+            rating={1}
+            selectStar={require('./../../../../assets/star_filled.png')}
+            // unSelectStar={require('./unselect_star.png')}
+          />
           <View>
             <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
             <Text style={{ textAlign: 'center' }}>{item.position}</Text>

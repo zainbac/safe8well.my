@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   Home,
-  SectionFifa,
   Order,
   OrderDetail,
   ScanQRCode,
@@ -55,18 +54,6 @@ function AppNavigator() {
         <Stack.Screen
           name='Promotion'
           component={Promotion}
-          options={{
-            headerShown: false,
-            opacity: 1,
-            cardStyle: {
-              backgroundColor: 'white',
-            },
-          }}
-        />
-
-        <Stack.Screen
-          name='SectionFifa'
-          component={SectionFifa}
           options={{
             headerShown: false,
             opacity: 1,

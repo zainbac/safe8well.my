@@ -1,5 +1,5 @@
 import Home from './Home';
-import SectionFifa from './SectionFifa';
+
 import Order from './Order';
 import OrderDetail from './OrderDetail';
 import ScanQRCode from './ScanQrCode';
@@ -17,7 +17,6 @@ import Technician from './Technician';
 import Facebook from './Facebook';
 export {
   Home,
-  SectionFifa,
   Technician,
   RentCaj,
   RentM11,
