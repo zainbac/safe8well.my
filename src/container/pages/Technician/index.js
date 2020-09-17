@@ -48,7 +48,24 @@ function Item({ item }) {
             alignContent: 'center',
           }}
         />
-        <AirbnbRating count={item.id} defaultRating={11} size={20} />
+        <View style={{ flexDirection: 'column-reverse' }}>
+          <Text
+            style={{
+              alignContent: 'flex-end',
+              alignItems: 'flex-start',
+              top: 24,
+              fontWeight: '300',
+            }}
+          >
+            Rating:
+          </Text>
+          <AirbnbRating
+            style={{ bottom: 310 }}
+            count={item.rating}
+            defaultRating={11}
+            size={20}
+          />
+        </View>
 
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View>
@@ -192,7 +209,7 @@ export default class Technician extends Component {
             show={showAlert}
             showProgress={false}
             title='Internet Error'
-            message='We are unable to process your request'
+            message=' Sorry :( We are unable to process your request'
             closeOnTouchOutside={true}
             closeOnHardwareBackPress={false}
             showCancelButton={true}
