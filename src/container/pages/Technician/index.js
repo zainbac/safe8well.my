@@ -54,13 +54,13 @@ function Item({ item }) {
               alignContent: 'flex-end',
               alignItems: 'flex-start',
               top: 24,
-              fontWeight: '300',
+              fontWeight: 'bold',
             }}
           >
-            Rating:
+            Rating
           </Text>
           <AirbnbRating
-            style={{ bottom: 310 }}
+            style={{ bottom: 310, left: 30 }}
             count={item.rating}
             defaultRating={11}
             size={20}

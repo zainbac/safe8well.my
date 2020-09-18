@@ -11,13 +11,13 @@ import {
   FlatList,
   BackHandler,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as Permissions from 'expo-permissions';
 import * as Linking from 'expo-linking';
-import Constants from 'expo-constants';
-import { Card, ListItem, Icon, Alert } from 'react-native-elements';
-import PropTypes from 'prop-types';
+
+import { Alert } from 'react-native-elements';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 import firebase from './../../../container/pages/database';
 const db = firebase.database();
@@ -27,6 +27,9 @@ let itemsRef = db.ref('/1xxXA9Kf9vWZxeBajpcebJLfbeyi-EJy_69DSJadPzSw/Sheet1');
 export default class ScanQRCode extends Component {
   constructor(props) {
     super(props);
+    this.states = {
+      showAlert: false,
+    };
     //Binding handleBackButtonClick function with this
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
   }
@@ -49,7 +52,7 @@ export default class ScanQRCode extends Component {
   handleBackButtonClick() {
     // Registered function to handle the Back Press
     // We are generating an alert to show the back button pressed
-    this.props.navigation.goBack(null);
+    this.props.navigation.navigate('Login');
     return true;
 
     // Return true to enable back button over ride.
@@ -69,7 +72,8 @@ export default class ScanQRCode extends Component {
     hasCameraPermission: null,
     barcodeType: '',
     barcodeData: '',
-
+    scroll: true,
+    showAlert: false,
     name: '',
     Sheet1: null,
     title: [],
@@ -78,21 +82,23 @@ export default class ScanQRCode extends Component {
 
   //ALERT
 
-  _showAlert = () => {
-    Alert.alert(
-      'ALERT',
-      'IF MORE THAN 3 DAYS LATE YOU WILL BE CHARGE DEDUCTION BASED ON YOUR DEPOSIT',
-      [
-        { text: '', onPress: () => console.log('Ask me later pressed') },
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
-      ],
-      { cancelable: false }
-    );
+  showAlert = () => {
+    this.setState({
+      showAlert: true,
+    });
+  };
+
+  hideAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+  };
+
+  fuckAlert = () => {
+    this.setState({
+      showAlert: false,
+    });
+    this.props.navigation.navigate('Login');
   };
 
   async componentDidMount() {
@@ -105,33 +111,48 @@ export default class ScanQRCode extends Component {
   }
 
   handleBarCodeScanned = ({ type, data, hantu }) => {
-    this.setState({
-      barcodeType: type,
-      barcodeData: data,
-      hantu: [],
-    });
-
-    var x = data;
-    itemsRef
-      .orderByChild('SERIAL NO')
-      .equalTo(x)
-      .limitToLast(1)
-      .once('value', function (snapshot) {
-        let data = snapshot.val();
-        let Sheet1 = Object.values(data);
-
-        var title = [];
-        //console.log(Sheet1);
-
-        snapshot.forEach(function (child) {
-          console.log(title);
-          var url = child.val().STATUS;
-          alert(`This is Your Serial No :${child.val().STATUS}.  `);
-
-          Linking.openURL('https://Safe8well.my/' + url);
-        });
+    if (
+      data.includes('*') ||
+      data.length > 13 ||
+      data === '' ||
+      data.indexOf(' ') >= 0
+    ) {
+      this.setState({
+        error: true,
+        showAlert: true,
+      });
+    } else {
+      this.setState({
+        barcodeType: type,
+        barcodeData: data,
+        hantu: [],
       });
 
+      var x = data;
+
+      itemsRef
+        .orderByChild('SERIAL NO')
+        .equalTo(x)
+        .limitToLast(1)
+        .once('value', function (snapshot) {
+          let data = snapshot.val();
+          let Sheet1 = Object.values(data);
+
+          var title = [];
+          //console.log(Sheet1);
+
+          snapshot.forEach(function (child) {
+            console.log(title);
+            var url = child.val().STATUS;
+            alert(`This is Your Serial No :${child.val().STATUS}.  `);
+
+            Linking.openURL(
+              'https://wa.me/60134472956?text=I%20interested%20to%20buy%20your%20rental%20equipment%20with%20serialo%20No%20code%20 : %20' +
+                url
+            );
+          });
+        });
+    }
     /alert(`Bar code with type ${type} and data ${data} has been scanned!`);/;
   };
 
@@ -146,6 +167,50 @@ export default class ScanQRCode extends Component {
   //   }
 
   render() {
+    {
+      const { showAlert } = this.state;
+      if (this.state.error)
+        return (
+          <View style={{ justifyContent: 'center', backgroundColor: '#fff' }}>
+            <ImageBackground
+              source={require('./../../../../assets/login1.png')}
+              style={{
+                position: 'absolute',
+                flex: 1,
+                width: 420,
+                bottom: 0,
+                top: 20,
+                height: 900,
+                left: 0,
+              }}
+            ></ImageBackground>
+            <AwesomeAlert
+              style={{
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+              }}
+              show={showAlert}
+              showProgress={false}
+              title='Error'
+              message=' Sorry :( We are unable to process your request because the rental equipment is not valid to buy yet'
+              closeOnTouchOutside={true}
+              closeOnHardwareBackPress={false}
+              showCancelButton={true}
+              showConfirmButton={true}
+              cancelText='No, cancel'
+              confirmText='Logout'
+              confirmButtonColor='#DD6B55'
+              onCancelPressed={() => {
+                this.fuckAlert();
+              }}
+              onConfirmPressed={() => {
+                this.hideAlert();
+                BackHandler.exitApp();
+              }}
+            />
+          </View>
+        );
+    }
     const { hasCameraPermission } = this.state;
 
     if (hasCameraPermission === null) {

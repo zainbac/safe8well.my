@@ -9,9 +9,9 @@ import {
   StyleSheet,
   ImageBackground,
 } from 'react-native';
-import { Card, ListItem, Icon, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import Modal from 'react-native-modal';
-import Navbarr from '../../../../src/components/organism/NavbarH';
+
 import GoOxygen from '../../../../src/components/molecule/GoMiniXsr';
 import GoCaj from '../../../../src/components/molecule/GoCaj';
 import GoBed from '../../../../src/components/molecule/GoBed';
@@ -34,7 +34,7 @@ class Order extends Component {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 16 }}>
-          I Need Assistant{' '}
+          I Need Assistant
         </Text>
       </View>
     </TouchableOpacity>
@@ -86,23 +86,9 @@ class Order extends Component {
     // We are generating an alert to show the back button pressed
     this.props.navigation.goBack(null);
     return true;
-
-    // Return true to enable back button over ride.
-    return true;
-
-    // We can move to any screen. If we want
-    this.props.navigation.goBack(null);
-    // Returning true means we have handled the backpress
-    // Returning false means we haven't handled the backpress
-    return true;
   }
-  static navigationOptions = {
-    //Setting the header of the screen
-    title: 'Second Page',
-  };
-  render() {
-    const { navigate } = this.props.navigation;
 
+  render() {
     return (
       <View style={{ flex: 1 }}>
         <ImageBackground
@@ -133,7 +119,7 @@ class Order extends Component {
               color: 'white',
             }}
           >
-            Hi , What do you like to rent ?{' '}
+            Hi , What do you like to rent ?
           </Text>
 
           <ScrollView horizontal={true} style={{ flex: 1, marginTop: 20 }}>
