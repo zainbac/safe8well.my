@@ -21,6 +21,7 @@ import Gonews from '../../../../src/components/molecule/GoNews';
 import MainFeatureH from '../../../../src/components/organism/MainFeatureH';
 import HomeNaveFeature from '../../../../src/components/organism/HomeNaveFeature';
 import HomeCarousel from '../../pages/CarouselHome';
+import CovidAPI from '../../../components/organism/CovidAPI';
 // import Gonews2 from '../../../../src/components/molecule/GoNews2';
 // import { withNavigation } from '@react-navigation/compat';
 // import ScrollableItemsss from './../../../components/GoNewsBapak';
@@ -196,6 +197,7 @@ class Homes extends Component {
                 position: 'relative',
               }}
             />
+            
             <Text
               style={{
                 fontWeight: 'bold',
@@ -205,7 +207,18 @@ class Homes extends Component {
                 color: '#434449',
               }}
             >
-              WELEPAIR.MY FANPAGE
+              COVID-19 UPDATE
+            </Text>
+            <CovidAPI></CovidAPI>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 14,
+                marginTop: 20,
+                marginHorizontal: 11,
+                color: '#434449',
+              }}
+            >WELEPAIR-MY FAN PAGE
             </Text>
             <Gonews
               onPress={() => this.props.navigation.navigate('Facebook')}

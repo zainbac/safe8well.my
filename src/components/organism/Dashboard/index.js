@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
       uid: firebase.auth().currentUser.uid,
       email: firebase.auth().currentUser.email,
     };
-
+  console.log( firebase.auth().currentUser.displayName)
     const { url } = this.state;
     return (
       <View

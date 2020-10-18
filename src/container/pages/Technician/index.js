@@ -15,12 +15,20 @@ import { Rating, AirbnbRating } from 'react-native-elements';
 import * as Linking from 'expo-linking';
 import FetchingIndicator from 'react-native-fetching-indicator';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import ShowAlert from '../../../components/molecule/ShowAlert';
 
 function Item({ item }) {
   const handlePress = () => {
     Linking.openURL('tel:' + item.nophone);
   };
 
+   
+  const handlePresss = () => {
+    Linking.openURL(
+      'whatsapp://send?text=hi ,I would like repair my hospital equipment &phone=06' +
+        item.nophone
+    );
+  };
   return (
     <View>
       <ImageBackground
@@ -48,50 +56,97 @@ function Item({ item }) {
             alignContent: 'center',
           }}
         />
-        <View style={{ flexDirection: 'column-reverse' }}>
-          <Text
-            style={{
-              alignContent: 'flex-end',
-              alignItems: 'flex-start',
-              top: 24,
-              fontWeight: 'bold',
-            }}
-          >
-            Rating
-          </Text>
-          <AirbnbRating
-            style={{ bottom: 310, left: 30 }}
-            count={item.rating}
-            defaultRating={11}
-            size={20}
-          />
-        </View>
-
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <View>
-            <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
-            <Text style={{ textAlign: 'center' }}>{item.position}</Text>
+        <View style={{}}>
+          <View style={{ top: 22 }}>
+            <AirbnbRating
+              style={{ bottom: 40 }}
+              count={item.rating}
+              defaultRating={11}
+              size={20}
+            />
           </View>
-
           <View>
+            <Text
+              style={{
+                fontWeight: 'bold',
+              }}
+            >
+              Rating :
+            </Text>
+            <Text style={{ fontWeight: 'bold' }}>{item.name}</Text>
+            <Text style={{}}>{item.position}</Text>
+
             <TouchableOpacity
               style={{
                 height: 50,
-                width: 50,
+                width: 200,
+                marginTop: 10,
+                marginBottom: 20,
                 alignContent: 'center',
-                flexDirection: 'column',
-                alignSelf: 'flex-end',
+                alignSelf: 'center',
+                flexWrap: 'wrap',
+                alignItems: 'center',
               }}
               onPress={handlePress}
             >
-              <View>
+              <View
+                style={{
+                  backgroundColor: 'green',
+                  paddingVertical: 10,
+                  paddingHorizontal: 0,
+                  borderBottomLeftRadius: 10,
+                  borderBottomRightRadius: 10,
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
+                  width: 150,
+                  alignItems: 'center',
+
+                  justifyContent: 'center',
+                }}
+              >
                 <Text
                   style={{
-                    color: 'green',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    alignContent: 'center',
+                    alignSelf: 'center',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
                   }}
                 >
                   Call
                 </Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                width: 150,
+                fontWeight: 'bold',
+                alignSelf: 'center',
+                bottom: 20,
+              }}
+              onPress={handlePresss}
+            >
+              <View>
+                <View
+                  style={{
+                    backgroundColor: '#4e70f6',
+                    paddingVertical: 14,
+                    fontWeight: 'bold',
+                    paddingHorizontal: 0,
+                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                    borderTopLeftRadius: 10,
+                    borderTopRightRadius: 10,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Text style={styles.buttonText}>Send him text message</Text>
+                </View>
               </View>
             </TouchableOpacity>
           </View>
@@ -247,11 +302,16 @@ export default class Technician extends Component {
             <Text
               style={{
                 textAlign: 'center',
-
+                flexWrap: 'wrap',
                 marginTop: 40,
                 color: 'white',
                 fontSize: 20,
-
+                flex: 1,
+                alignContent: 'flex-end',
+                alignItems: 'flex-end',
+                alignSelf: 'flex-end',
+                justifyContent: 'flex-end',
+                textAlign: 'right',
                 fontWeight: '100',
               }}
             >
@@ -293,14 +353,18 @@ const styles = StyleSheet.create({
 
     marginTop: 0,
   },
+  buttonText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+    fontSize: 11,
+  },
   listItem: {
-    margin: 5,
-    padding: 40,
+    margin: 20,
+    padding: 20,
     backgroundColor: '#FFF',
-    width: '80%',
+    width: '90%',
     flex: 1,
-    alignSelf: 'center',
-    flexDirection: 'row',
+
     borderRadius: 5,
   },
   title: {

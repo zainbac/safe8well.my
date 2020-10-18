@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  BackHandler,
+  Alert,
+  FlatList,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import NavFeature from '../../../../src/components/molecule/NavFeature';
 import { withNavigation } from '@react-navigation/compat';
 import firebase from './../../../container/pages/database';
 import { Card, ListItem, Icon } from 'react-native-elements';
+import AwesomeAlert from 'react-native-awesome-alerts';
+import ShowAlert from '../../../../src/components/molecule/ShowAlert';
 //icon biru atas
 
-class HomeNaveFeature extends React.Component {
+class HomeNaveFeature extends Component {
+  constructor(props) {
+    super(props);
+
+    state = { scroll: true, error: true, showAlert: false };
+
+    this.states = {
+      scroll: true,
+      data: [],
+      showAlert: false,
+      dataSources: [],
+    };
+  }
   handleSignUpp = () => {
     var user = firebase.auth().currentUser;
 
@@ -16,6 +41,10 @@ class HomeNaveFeature extends React.Component {
       this.props.navigation.navigate('Login');
     }
   };
+
+  disableScroll() {
+    this.setState({ scroll: !this.state.scroll });
+  }
 
   handleSignUppp = () => {
     var user = firebase.auth().currentUser;
@@ -34,10 +63,15 @@ class HomeNaveFeature extends React.Component {
       this.props.navigation.navigate('Loading');
     } else {
       Alert.alert('User need to Login First');
+
+      <ShowAlert />;
+
+      // Example.alert('you have low bandwith')
+      //to catch the errors if any
     }
   };
 
-  render(props) {
+  render() {
     return (
       <View
         style={{

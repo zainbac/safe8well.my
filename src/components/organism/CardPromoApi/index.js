@@ -152,7 +152,7 @@ export class CardPromoApi extends React.Component {
               alignSelf: 'center',
               justifyContent: 'center',
               position: 'relative',
-              padding: 20,
+
               marginTop: 30,
             },
             this.state.zoomedStyle,
@@ -185,9 +185,9 @@ export class CardPromoApi extends React.Component {
             ref={(c) => (this._flatList = c)}
             style={[
               {
-                flex: 1,
-                marginTop: 0,
-                marginBottom: 40,
+                flexDirection: 'column',
+                marginTop: 20,
+                marginBottom: 90,
               },
               this.props.listStyle,
             ]}

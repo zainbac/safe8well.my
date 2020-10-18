@@ -77,8 +77,8 @@ export class ItemCard extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected && !this.props.selected) {
       Animated.timing(this.state.heightAnim, {
-        toValue: nextProps.maxHeight || 400,
-        duration: nextProps.heightDuration || 260,
+        toValue: nextProps.maxHeight || 80,
+        duration: nextProps.heightDuration || 160,
       }).start();
     }
 
@@ -118,7 +118,7 @@ export class ItemCard extends React.Component {
               this.props.selected ? 0 : this.props.borderRadius || 10
             }
             source={this.props.picture}
-            style={[styles.image, { height: this.props.height || 200 }]}
+            style={[styles.image, { height: this.props.height || 100 }]}
           >
             <Text style={[styles.text, this.props.textStyle]}>
               {this.props.title}
@@ -132,7 +132,11 @@ export class ItemCard extends React.Component {
                     right: 26,
                   }}
                 >
-                  {this.props.closeIcon || <Text>X</Text>}
+                  {this.props.closeIcon || (
+                    <Text style={{ color: '#3b8af1', fontWeight: 'bold' }}>
+                      X
+                    </Text>
+                  )}
                 </View>
               </TouchableWithoutFeedback>
             ) : null}
@@ -155,31 +159,30 @@ export class ItemCard extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
 
     backgroundColor: 'white',
-    margin: 20,
+    margin: 10,
     padding: 0,
   },
   image: {
-    padding: 90,
-    margin: 0,
+    padding: 100,
+
+    flexDirection: 'column',
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
   text: {
     backgroundColor: 'transparent',
     color: '#c42645',
-    padding: 35,
+    padding: 30,
 
-    left: 120,
     bottom: 40,
     textAlign: 'center',
-    fontWeight: '800',
+    fontWeight: 'bold',
     fontSize: 10,
   },
 });

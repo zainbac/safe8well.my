@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import { withNavigation } from '@react-navigation/compat';
-import { Card, ListItem, Icon } from 'react-native-elements';
+
 const Gonews = (props) => {
   return (
     <View style={{}}>
       <View style={{ flexDirection: 'column' }}>
         <TouchableOpacity onPress={props.onPress}>
           <View
-            elevation={2}
+            elevation={5}
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
+              flex: 1,
               marginTop: 10,
               paddingTop: 0,
               backgroundColor: '#ffff',

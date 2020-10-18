@@ -5,16 +5,19 @@ import {
   Text,
   View,
   BackHandler,
+  Dimensions,
   ImageBackground,
   Alert,
 } from 'react-native';
 import { CardPromoApi } from './../../../components/organism/CardPromoApi';
 import FetchingIndicator from 'react-native-fetching-indicator';
+ 
 
 export default class Promotion extends Component {
   constructor(props) {
     super(props);
     //Binding handleBackButtonClick function with this
+
     this.state = {
       scroll: true,
 
@@ -28,6 +31,7 @@ export default class Promotion extends Component {
   }
 
   componentDidMount() {
+    
     fetch('https://lit-sands-32641.herokuapp.com')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -46,6 +50,7 @@ export default class Promotion extends Component {
       'hardwareBackPress',
       this.handleBackButtonClick
     );
+   
   }
   componentWillUnmount() {
     // This is the Last method in the activity lifecycle
@@ -79,6 +84,7 @@ export default class Promotion extends Component {
       <View style={styles.container}>
         {/* <CardPromoApi cards={this.state.dataSource} />
         <FetchingIndicator isFetching /> */}
+
         <ImageBackground
           source={require('./../../../../assets/login1.png')}
           style={{
@@ -91,6 +97,7 @@ export default class Promotion extends Component {
             left: 0,
           }}
         ></ImageBackground>
+
         {this.state.spinner ? (
           <CardPromoApi cards={this.state.dataSource} />
         ) : (
@@ -100,11 +107,12 @@ export default class Promotion extends Component {
     );
   }
 }
+ 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 40,
+
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',

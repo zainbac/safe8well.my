@@ -5,6 +5,7 @@ import { Card, ListItem, Icon } from 'react-native-elements';
 //secton atas
 
 const NavFeature = (props) => {
+  this.state = { showAlert: false };
   return (
     <View style={{ flex: 1, alignItems: 'center' }}>
       <TouchableOpacity onPress={props.onPress}>
