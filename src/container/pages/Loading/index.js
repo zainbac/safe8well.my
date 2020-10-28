@@ -65,13 +65,14 @@ class Loading extends Component {
     const { navigate } = this.props.navigation;
     const { animationState } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1}}>
         <ImageBackground
           source={require('./../../../../assets/login1.png')}
           style={{
             position: 'absolute',
             flex: 1,
             width: 420,
+            
             bottom: 0,
             top: 20,
             height: 720,
@@ -82,12 +83,14 @@ class Loading extends Component {
         <View
           style={{
             flex: 1,
-            paddingTop: 40,
+            paddingTop:10,
+            marginHorizontal:1,
+            
           }}
         >
-          <View style={{ marginTop: 0 }}>
+          <View style={{ paddingTop:20,marginHorizontal:0,alignSelf:'center',alignItems:'center',alignContent:'center' }}>
             <Text
-              maxLength={20}
+              maxLength={10}
               style={{
                 fontSize: 17,
                 fontWeight: 'bold',
@@ -103,14 +106,15 @@ class Loading extends Component {
               Pless appear your ID member card at our Counter to enjoy Discount
               Member Price
             </Text>
-            <View style={{ position: 'relative' }}>
+            <View style={{   alignContent:'center',alignSelf:'center' }}>
               <Image
                 source={require('../../../../assets/cardX.png')}
                 style={{
                   height: 400,
-                  width: 410,
+                  width: 360,
                   alignItems: 'center',
-                  marginHorizontal: 10,
+                  marginHorizontal: 0,
+                
                 }}
               />
 
@@ -118,11 +122,15 @@ class Loading extends Component {
                 style={{
                   paddingTop: 16,
                   paddingBottom: 20,
-                  marginHorizontal: 20,
+                  
 
-                  alignItems: 'center',
+                  alignItems: 'flex-start',
+                  alignContent:'flex-start',
+                  alignSelf:'center',
+                  right:0,
+                  
                   bottom: 290,
-                  left: 40,
+                
                 }}
               >
                 <Dashboard />
@@ -131,7 +139,7 @@ class Loading extends Component {
 
             <View>
               <View
-                style={{ justifyContent: 'flex-end', right: 320, bottom: 20 }}
+               
               ></View>
             </View>
           </View>

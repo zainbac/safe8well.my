@@ -146,6 +146,7 @@ export default function App() {
   const [Notaldata,setNotalData]=useState([])
   const [Rotaldata,setRotalData]=useState([])
   const [Dotaldata,setDotalData]=useState([])
+  const [currentDate, setCurrentDate] = useState('');
   const fetchApiCall = () => {
     
     const x=[]
@@ -167,8 +168,8 @@ export default function App() {
         setTotalData(response.response[0].deaths)
         setNotalData(response.response[0].new)
         setTotalData(response.response[0].cases )
-        setDotalData(response.response[0].time)
-        console.log(Object.assign({},response.response[0],response.response[0].deaths,response.response[0].new,response.response[0].cases.recovered,response.response[0].time))
+         
+        console.log(Object.assign({},response.response[0],response.response[0].deaths,response.response[0].new,response.response[0].cases.recovered,response.response.time))
        
     }) 
       
@@ -178,6 +179,13 @@ export default function App() {
   }
   useEffect(()=>{
     fetchApiCall()
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    setCurrentDate(
+      date + '/' + month + '/' + year 
+      
+    );
 },[])
 
   // const axiosApiCall = () => {
@@ -221,7 +229,9 @@ export default function App() {
       </TouchableHighlight> */}
       <View elevation={5} style={styles.quoteContainer}>
       <Text style={styles.title}>Status Covid Terkini Di Malaysia</Text>
-      <Text style={styles.title}>{Dotaldata.time}</Text>
+      <Text style={styles.textStyle}>
+            {currentDate}
+          </Text>
         {/* <Text style={styles.quote}>{quote}</Text>
         <Text style={styles.source}>{source}</Text> */}
          <Text style={styles.title1}>Confirmed Cases</Text>
@@ -252,6 +262,12 @@ const styles = StyleSheet.create({
   title1: {
     fontSize: 16,
     color: 'red',
+    textAlign:'center',
+    fontWeight:'bold'
+  },
+  textStyle: {
+    fontSize: 16,
+    color: 'black',
     textAlign:'center',
     fontWeight:'bold'
   },

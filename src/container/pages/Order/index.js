@@ -121,8 +121,9 @@ class Order extends Component {
           >
             Hi , What do you like to rent ?
           </Text>
-
-          <ScrollView horizontal={true} style={{ flex: 1, marginTop: 20 }}>
+          <ScrollView  >
+<View>
+          <ScrollView horizontal={true} style={{  }}>
             <GoBed onPress={() => this.props.navigation.navigate('RentCaj')} />
             {/* <GoSsc /> */}
             <GoCaj
@@ -138,6 +139,8 @@ class Order extends Component {
               ></View>
             </View>
           </ScrollView>
+          </View>
+          
           {this._renderButton('A slower modal', () =>
             this.setState({ visibleModal: 3 })
           )}
@@ -151,6 +154,7 @@ class Order extends Component {
           >
             {this._renderModalContent()}
           </Modal>
+          </ScrollView>
         </View>
         <Button
           title='CLICK HERE TO KNOW OUR PROCESS

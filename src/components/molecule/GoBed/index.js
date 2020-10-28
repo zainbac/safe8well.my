@@ -4,14 +4,14 @@ import { withNavigation } from '@react-navigation/compat';
 
 const GoBed = (props) => {
   return (
-    <View style={{ padding: 10, alignItems: 'center', paddingTop: 18 }}>
+    <View style={{ padding: 0, alignItems: 'center', paddingTop: 18 }}>
       <View style={{ alignItems: 'center' }}>
         <View
           style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            padding: 54,
+            padding: 44,
             backgroundColor: '#fff',
             borderTopLeftRadius: 8,
             borderBottomLeftRadius: 8,

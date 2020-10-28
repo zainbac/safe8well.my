@@ -1,8 +1,33 @@
 import React, { Component } from 'react';
 import MainFeature from '../../../../src/components/molecule/MainFeature';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text ,Alert} from 'react-native';
+import firebase from './../../../container/pages/database';
 import { withNavigation } from '@react-navigation/compat';
 class MainfeatureH extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    state = { scroll: true, error: true, showAlert: false };
+
+    this.states = {
+      scroll: true,
+      data: [],
+      showAlert: false,
+      dataSources: [],
+    };
+  }
+  handlevoucher = () => {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      this.props.navigation.navigate('Promotion');
+    } else {
+    Alert.alert("You need to sign in first")
+    }
+  };
+
+
   render(props) {
     return (
       <View
@@ -17,8 +42,10 @@ class MainfeatureH extends React.Component {
         }}
       >
         <MainFeature
-          onPress={() => this.props.navigation.navigate('Promotion')}
-          title='REPAIR VOUCHER'
+          // onPress={() => this.props.navigation.navigate('Promotion')}
+          onPress={this.handlevoucher}
+          title='SPAREPART VOUCHER'
+         
           img={require('../../../../assets/marketing.png')}
         />
         <MainFeature

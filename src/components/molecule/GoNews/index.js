@@ -14,6 +14,7 @@ const Gonews = (props) => {
               flexWrap: 'wrap',
               flex: 1,
               marginTop: 10,
+              marginBottom:20,
               paddingTop: 0,
               backgroundColor: '#ffff',
               borderTopLeftRadius: 10,

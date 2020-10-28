@@ -32,7 +32,7 @@ const OrderDetail = (props) => {
           marginBottom: 50,
         }}
       >
-        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 17 }}>
+        <Text style={{ textAlign: 'center',color: 'white', fontWeight: 'bold', fontSize: 17 }}>
           PROCEDURE OF ONLINE RENTAL{' '}
         </Text>
         <ScrollView>
@@ -79,11 +79,11 @@ const OrderDetail = (props) => {
                 marginBottom: 10,
               }}
             >
-              Then , verify your amount need to transfer to account and save it
-              :{' '}
+              Then , we will contact to you regarding of the rental equipment that you apply
+              {' '}
             </Text>
             <Text style={{ fontWeight: 'bold', textAlign: 'center' }}>
-              our Founder personal account.{' '}
+        
             </Text>
             <Text
               style={{
@@ -91,7 +91,7 @@ const OrderDetail = (props) => {
                 textAlign: 'center',
               }}
             >
-              RHB : 1123 0300 266557{' '}
+           
             </Text>
             <Image
               source={require('../../../../assets/dollar.png')}
@@ -100,8 +100,11 @@ const OrderDetail = (props) => {
                 height: 100,
                 alignItems: 'center',
                 borderRadius: 6,
+                alignItems: 'center',
+                borderRadius: 6,
 
                 alignSelf: 'center',
+              
               }}
             />
           </Card>
@@ -114,8 +117,7 @@ const OrderDetail = (props) => {
                 paddingTop: 18,
               }}
             >
-              After that , you need to submit form at our links and upload the
-              receipt payment for proof.{' '}
+              After that , you will need to transfer the amount as you filled at company bank account through our medium.{' '}
             </Text>
 
             <Image
@@ -123,11 +125,16 @@ const OrderDetail = (props) => {
               style={{
                 height: 200,
                 width: 400,
+                alignItems: 'center',
+                borderRadius: 6,
 
+                alignSelf: 'center',
+            
                 alignItems: 'center',
                 borderRadius: 6,
                 justifyContent: 'center',
-                right: 20,
+            
+            
               }}
             />
           </Card>
@@ -182,6 +189,11 @@ const OrderDetail = (props) => {
               style={{
                 height: 200,
                 width: 400,
+                alignItems: 'center',
+                borderRadius: 6,
+
+                alignSelf: 'center',
+              
                 alignItems: 'center',
                 borderRadius: 6,
                 justifyContent: 'center',

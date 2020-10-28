@@ -92,7 +92,7 @@ export default class Dashboard extends Component {
         style={{
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'transparent',
+          
         }}
       >
         <View style={{ paddingTop: 3 }}>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     display: 'flex',
 
     top: 40,
-    backgroundColor: '#fff',
+    
   },
   textStyle: {
     fontSize: 13,

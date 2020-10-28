@@ -42,6 +42,28 @@ class HomeNaveFeature extends Component {
     }
   };
 
+  handletech = () => {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      this.props.navigation.navigate('Technician');
+    } else {
+      Alert.alert('You need to Sign in');
+    }
+  };
+
+  handletech2 = () => {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      this.props.navigation.navigate('Order');
+    } else {
+      Alert.alert('You need to Sign in');
+    }
+  };
+
+
+
   disableScroll() {
     this.setState({ scroll: !this.state.scroll });
   }
@@ -106,7 +128,7 @@ class HomeNaveFeature extends Component {
         />
 
         <NavFeature
-          onPress={() => this.props.navigation.navigate('Technician')}
+          onPress={this.handletech}
           title='TECHNICIAN'
           img={require('../../../../assets/tm4.png')}
         />

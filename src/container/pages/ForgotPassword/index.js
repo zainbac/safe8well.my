@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   inputemail: {
     textAlign: 'center',
-    width: 300,
+    width: 280,
     height: 45,
     borderRadius: 15,
     fontSize: 16,

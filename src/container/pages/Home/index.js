@@ -14,7 +14,7 @@ import {
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 import Gonews from '../../../../src/components/molecule/GoNews';
-
+import CovidAPI from '../../../components/organism/CovidAPI';
 import MainFeatureH from '../../../../src/components/organism/MainFeatureH';
 import HomeNaveFeature from '../../../../src/components/organism/HomeNaveFeature';
 import firebase from './../../../container/pages/database';
@@ -252,7 +252,22 @@ class Home extends Component {
                 position: 'relative',
               }}
             />
+  <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 14,
+                marginTop: 20,
+                marginHorizontal: 11,
+                color: '#434449',
+              }}
+            >
+              COVID-19 UPDATE
+            </Text>
+            <CovidAPI></CovidAPI>
             <Text
+
+            
+            
               style={{
                 fontWeight: 'bold',
                 fontSize: 14,
@@ -264,6 +279,7 @@ class Home extends Component {
               WELEPAIR.MY FANPAGE
             </Text>
             <Gonews
+            style={{marginBottom:30}}
               onPress={() => this.props.navigation.navigate('Facebook')}
             ></Gonews>
           </View>
