@@ -110,17 +110,21 @@ export default class Dashboard extends Component {
               Member ID
             </Text>
           </View>
-
+ 
           <FlatList
             data={dataArray}
+            style={{backgroundColor:'transparent'}}
             renderItem={({ item }) => (
-              <ListItem
+              
+              <ListItem 
+              style={{ color: 'transparent' }}
                 title={
                   <Text
                     style={{
                       fontSize: 12,
                       fontWeight: 'bold',
                       textAlign: 'center',
+                      backgroundColor:'transparent',
                       color: 'black',
                     }}
                   >
@@ -128,9 +132,11 @@ export default class Dashboard extends Component {
                   </Text>
                 }
               />
+              
             )}
           />
-        </View>
+          </View>
+       
       </View>
     );
   }
@@ -139,7 +145,7 @@ export default class Dashboard extends Component {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-
+     backgroundColor:'transparent' ,
     top: 40,
     
   },

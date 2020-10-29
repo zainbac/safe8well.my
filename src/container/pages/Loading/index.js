@@ -126,8 +126,10 @@ class Loading extends Component {
 
                   alignItems: 'flex-start',
                   alignContent:'flex-start',
-                  alignSelf:'center',
-                  right:0,
+                 alignSelf:'center',
+
+                  
+                  
                   
                   bottom: 290,
                 
