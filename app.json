@@ -1,20 +1,19 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "gojek",
+    "name": "Welepair",
+    "slug": "Welepair",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
-
+    
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "com.welepair.welepair",
       "versionCode": 1
     },
-
-    "platforms": ["ios", "android", "web"],
-
+    "platforms": [
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icooo.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,11 +22,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "./assets/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.welepair.welepair",
       "buildNumber": "1.0.0"
-    }
+    },
+    "description": ""
   }
 }

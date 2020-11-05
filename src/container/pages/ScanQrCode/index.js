@@ -52,7 +52,7 @@ export default class ScanQRCode extends Component {
   handleBackButtonClick() {
     // Registered function to handle the Back Press
     // We are generating an alert to show the back button pressed
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Home');
     return true;
 
     // Return true to enable back button over ride.
@@ -98,7 +98,7 @@ export default class ScanQRCode extends Component {
     this.setState({
       showAlert: false,
     });
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Homes');
   };
 
   async componentDidMount() {

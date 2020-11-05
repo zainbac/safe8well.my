@@ -104,7 +104,7 @@ const OrderDetail = (props) => {
                 borderRadius: 6,
 
                 alignSelf: 'center',
-              
+             
               }}
             />
           </Card>

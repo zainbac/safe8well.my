@@ -72,7 +72,7 @@ class HomeCarousel extends React.Component {
           <ActivityIndicator size='small' animating={animating} />
         ) : (
           <View>
-            <ActivityIndicator size='large' animating={animating} />
+                 <ActivityIndicator size="small" color="#0000ff" />
           </View>
         )}
 

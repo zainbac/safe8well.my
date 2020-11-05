@@ -27,6 +27,17 @@ class MainfeatureH extends React.Component {
     }
   };
 
+  handlescan = () => {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      this.props.navigation.navigate('ScanQRCode');
+    } else {
+    Alert.alert("You need to sign in first")
+    }
+  };
+
+
 
   render(props) {
     return (
@@ -64,7 +75,7 @@ class MainfeatureH extends React.Component {
           img={require('../../../../assets/marketing3.png')}
         />
         <MainFeature
-          onPress={() => this.props.navigation.navigate('ScanQRCode')}
+      onPress={this.handlescan}
           title='RENT TO OWN PROGRAM'
           img={require('../../../../assets/marketing5.png')}
         />

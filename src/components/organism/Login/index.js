@@ -74,12 +74,14 @@ export default class Login extends React.Component {
     const netStatus = NetInfo.fetch();
 
     if (netStatus === 'none' || netStatus === 'NONE') {
-      BackHandler.exitApp();
-      console.log('error');
       this.setState({
         error,
         showAlert: true,
       });
+      BackHandler.exitApp();
+      console.log('error');
+      
+     
       return [];
     } else {
       console.log('error');
@@ -94,19 +96,30 @@ export default class Login extends React.Component {
     );
   }
   handleBackButtonClick() {
-    // Registered function to handle the Back Press
-    // We are generating an alert to show the back button pressed
-    showAlert: true, this.props.navigation.goBack(null);
-    return true;
+    Alert.alert(
+      ' Exit From App ',
+      ' Do you want to exit From App ?',
+      [
+        { text: 'Yes', onPress: () => BackHandler.exitApp() },
+        { text: 'No', onPress: () => console.log('NO Pressed') },
+      ],
+      { cancelable: false }
+    );
 
     // Return true to enable back button over ride.
     return true;
 
     // We can move to any screen. If we want
-    this.props.navigation.goBack(null);
-    // Returning true means we have handled the backpress
-    // Returning false means we haven't handled the backpress
-    return true;
+ 
+    // Registered function to handle the Back Press
+    // We are generating an alert to show the back button pressed
+   
+
+    // Return true to enable back button over ride.
+   
+
+    // We can move to any screen. If we want
+   
   }
 
   onResetPasswordPress = () => {

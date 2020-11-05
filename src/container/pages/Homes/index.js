@@ -11,6 +11,7 @@ import {
   BackHandler,
   TouchableOpacity,
 } from 'react-native';
+
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 // import MainSearch from '../../../../src/components/molecule/SearchFeature';
 import Gonews from '../../../../src/components/molecule/GoNews';
@@ -22,6 +23,7 @@ import MainFeatureH from '../../../../src/components/organism/MainFeatureH';
 import HomeNaveFeature from '../../../../src/components/organism/HomeNaveFeature';
 import HomeCarousel from '../../pages/CarouselHome';
 import CovidAPI from '../../../components/organism/CovidAPI';
+ 
 // import Gonews2 from '../../../../src/components/molecule/GoNews2';
 // import { withNavigation } from '@react-navigation/compat';
 // import ScrollableItemsss from './../../../components/GoNewsBapak';

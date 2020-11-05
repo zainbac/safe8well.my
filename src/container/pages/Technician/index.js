@@ -332,6 +332,9 @@ export default class Technician extends Component {
           ) : (
             <View>
               <FetchingIndicator
+
+                isFetching message='Loading'
+                 color='blue'
                 isFetching
                 style={{
                   flex: 1,

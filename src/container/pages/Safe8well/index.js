@@ -46,7 +46,7 @@ export default class Safe8well extends React.Component {
     return (
       <WebView
         source={{
-          uri: 'https://shopee.com.my/shop/158803766/search',
+          uri: 'https://shopee.com.my/zbcmarketing',
         }}
         style={{ marginTop: 20 }}
       />

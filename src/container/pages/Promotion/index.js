@@ -101,7 +101,7 @@ export default class Promotion extends Component {
         {this.state.spinner ? (
           <CardPromoApi cards={this.state.dataSource} />
         ) : (
-          <FetchingIndicator isFetching />
+          <FetchingIndicator   isFetching message='Loading' color='blue' />
         )}
       </View>
     );
